@@ -23,6 +23,7 @@ export class FirebeeHero extends HTMLElement {
                     <img src="Landing%20page/assets/Media/avatar.png" alt="FB Avatar" class="avatar-image" />
                   </div>
                 </div>
+                <div class="kofi-support" id="kofiSupport"></div>
                 <p class="eyebrow" id="heroEyebrow"></p>
                 <h1 id="heroTitle"></h1>
                 <div class="rule"></div>
@@ -31,6 +32,26 @@ export class FirebeeHero extends HTMLElement {
                 <div class="socials" id="socials"></div>
             </section>
         `;
+
+        this.renderKofiWidget();
+    }
+
+    renderKofiWidget() {
+        const container = this.querySelector('#kofiSupport');
+        if (!container) return;
+
+        const draw = () => {
+            if (!window.kofiwidget2) return;
+            kofiwidget2.init('Support me on Ko-fi', '#eb7600', 'B0S7257CGJ');
+            container.innerHTML = kofiwidget2.getHTML();
+        };
+
+        if (window.kofiwidget2) {
+            draw();
+        } else {
+            // widget script hasn't loaded yet (e.g. slow network) - wait for it
+            window.addEventListener('load', draw, { once: true });
+        }
     }
 }
 
