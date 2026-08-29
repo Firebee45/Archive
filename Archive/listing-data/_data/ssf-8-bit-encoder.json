@@ -1,0 +1,31 @@
+{
+  "title": "SSF - 8 Bit Encoder",
+  "cover": "area_render_12_.png",
+  "version": "Java",
+  "tags": "SSF, Cart Tech, Encoded",
+  "description": "An 8 bit  item encoder for SSF",
+  "credits": [],
+  "features": [
+    "Only two static entities when not running (locked hopper carts)",
+    "Can be FHL",
+    "Auto loops",
+    "Auto stop",
+    "Easy set across"
+  ],
+  "downsides": [
+    "80-100 second encoding time",
+    "Big",
+    "Gold heavy"
+  ],
+  "notes": "The encoder sends its output as a pulse per bit. It also needs a jump start due to how it\u2019s intended to be used.",
+  "gallery": [
+    "area_render_13_.png",
+    "area_render_12__1.png"
+  ],
+  "downloads": [
+    {
+      "filename": "SSF_-_8_Bit_Encoder.litematic",
+      "subfolder": "litematic"
+    }
+  ]
+}

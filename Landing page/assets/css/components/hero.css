@@ -1,0 +1,13 @@
+#emberCanvas {position: fixed; inset: 0; z-index: 0; pointer-events: none;}
+.hero {max-width: 640px; margin: 0 auto; padding: clamp(6.5rem, 14vw, 9rem) 1.75rem 5rem; text-align: center;}
+.avatar-stage {perspective: 700px; width: 172px; height: 172px; margin: 0 auto 2.2rem; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;}
+.avatar-wrap {position: relative; width: 100%; height: 100%; transition: transform 0.15s ease-out; transform-style: preserve-3d;}
+.avatar-wrap::before {content: ""; position: absolute; inset: -9px; clip-path: polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0% 50%); background: linear-gradient(155deg, var(--gold), var(--ember));}
+.avatar-wrap::after {content: ""; position: absolute; inset: -26px; clip-path: polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0% 50%); background: radial-gradient(circle, rgba(255, 106, 52, 0.32) 0%, transparent 70%); z-index: -1;}
+.avatar-mark {position: relative; width: 100%; height: 100%; display: grid; place-items: center; clip-path: polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0% 50%); background: linear-gradient(155deg, rgba(240, 234, 216, 0.08), rgba(240, 234, 216, 0.03)); color: var(--cream); font-family: var(--font-serif); font-size: 2.8rem; letter-spacing: 0.12em;}
+.avatar-image {position: relative; width: 100%; height: 100%; object-fit: cover; clip-path: polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0% 50%);}
+.rule {width: 34px; height: 1px; background: var(--gold); margin: 1.5rem auto; opacity: 0; animation: expandRule 0.8s ease 0.85s forwards;}
+.socials {display: flex; justify-content: center; flex-wrap: wrap; gap: 0.4rem 0; opacity: 0; animation: fadeUp 1s ease 1.25s forwards;}
+.socials a {color: var(--dim); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.3rem 0.9rem; border-right: 1px solid var(--line); transition: color 0.25s ease;}
+.socials a:last-child {border-right: none;}
+.socials a:hover {color: var(--ember);}

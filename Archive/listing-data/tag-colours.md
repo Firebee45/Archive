@@ -1,0 +1,11 @@
+- SSF: #009999
+- Storage: #cc0099
+- Cart: #ff6600
+- Non-Stackable: #8d1212
+- Peripherals: #2be42b
+- Misc: #e29b9b
+- Encoded: #0c5896
+- Box Processing: #ff0800
+- Main Storage: #a4a1ff
+- Cart Tech: #290d59
+- Farm: #ffffff

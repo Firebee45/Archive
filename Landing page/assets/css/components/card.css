@@ -1,0 +1,8 @@
+.grid-preview {max-width: 900px; margin: 0 auto; padding: clamp(4rem, 8vw, 6rem) 1.75rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.4rem; position: relative; z-index: 2;}
+.card {position: relative; background: rgba(240, 234, 216, 0.02); border: 1px solid var(--line); padding: 2rem 1.6rem; text-align: left; text-decoration: none; color: var(--cream); opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, background 0.35s ease;}
+.card.in-view {opacity: 1; transform: translateY(0);}
+.card:hover {border-color: rgba(255, 106, 52, 0.4); background: rgba(255, 106, 52, 0.04);}
+.card h3 {font-family: var(--font-serif); font-weight: 500; font-size: 1.25rem; margin-bottom: 0.5rem;}
+.card p {font-size: 0.78rem; color: var(--dim); line-height: 1.7; margin-bottom: 1.2rem;}
+.card .arrow {font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--honey); display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.3s ease;}
+.card:hover .arrow {gap: 0.7rem;}

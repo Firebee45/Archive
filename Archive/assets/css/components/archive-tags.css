@@ -1,0 +1,4 @@
+.Archive-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.Archive-tag{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:.05rem .25rem;border:1px solid var(--Archive-line);color:var(--Archive-dim);}
+.Archive-tagfloat{position:absolute;top:.9rem;right:.9rem;z-index:3;display:flex;gap:.35rem;}
+.Archive-tagfloat .Archive-tag{background:rgba(11,10,8,.55);border:1px solid rgba(240,234,216,.3);}

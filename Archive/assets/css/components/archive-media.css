@@ -1,0 +1,5 @@
+.Archive-art{position:absolute;inset:4px;overflow:hidden;}
+.Archive-thumb{position:absolute;inset:0;overflow:hidden;z-index:0;}
+.Archive-thumb img{position:absolute;right:0;top:50%;transform:translateY(-50%);width:210px;height:auto;display:block;}
+.Archive-glass{position:absolute;inset:0;clip-path:polygon(0 0,52% 0,35% 100%,0 100%);background:rgba(14,12,9,.32);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(1px);z-index:1;}
+.Archive-seam{position:absolute;inset:0;clip-path:polygon(52% 0,52.5% 0,35.5% 100%,35% 100%);background:linear-gradient(180deg,var(--Archive-gold),var(--Archive-ember));z-index:2;}

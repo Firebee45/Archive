@@ -1,0 +1,4 @@
+@media (max-width:640px) {.petal .label {display: none;}}
+@media (min-width:700px){.server-groups{grid-template-columns:1fr 1fr;}.server-section:first-child{padding-right:25px;border-right:1px solid rgba(255,255,255,.08);}.server-section:last-child{padding-left:25px;}}
+@media (prefers-reduced-motion: reduce) {*, *::before, *::after {animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;}}
+@media (pointer: coarse) {.cursor-glow {display: none;}}

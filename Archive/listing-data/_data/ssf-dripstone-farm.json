@@ -1,0 +1,32 @@
+{
+  "title": "SSF - Dripstone Farm",
+  "cover": "area_render_5_.png",
+  "version": "java",
+  "tags": "SSF, Farm",
+  "description": "A dripstone farm that is made for SSF",
+  "credits": [],
+  "features": [
+    "1200/h",
+    "works for sulfur spikes too but rates untested",
+    "very little redstone"
+  ],
+  "downsides": [
+    "4 entitles when not running and ~100 when running",
+    "needs 2 trident drowned",
+    "fairly big"
+  ],
+  "notes": null,
+  "gallery": [
+    "area_render_5__1.png"
+  ],
+  "downloads": [
+    {
+      "filename": "SSF_Dripstone_-_Sulfur_Farm_1.2k.litematic",
+      "subfolder": "litematic"
+    },
+    {
+      "filename": "SSF_Dripstone_-_Sulfur_Farm_1.2k.zip",
+      "subfolder": "je-world"
+    }
+  ]
+}

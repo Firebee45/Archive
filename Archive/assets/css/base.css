@@ -1,0 +1,4 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+.Archive-body{background:var(--Archive-bg);color:var(--Archive-cream);font-family:'DM Mono',monospace;min-height:100vh;padding:0 1rem;}
+.Archive-showcase{width:100%;max-width:1200px;display:flex;flex-direction:column;gap:3.5rem;margin:7rem auto 3rem auto;padding:1rem 0;}
+a.Archive-card{text-decoration:none;color:var(--Archive-cream);display:block;max-width:360px;margin:0 auto;}
