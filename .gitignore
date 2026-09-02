@@ -1,2 +1,4 @@
 bot/
 Landing page/assets/docs/
+__pycache__/
+*.py[cod]
