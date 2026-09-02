@@ -1,5 +1,5 @@
 Title: Hiveora - Java World Wide Item Call
-Status: Active
+Status: On hold
 Updated: 2026-04-25
 Tags: Encoded, Storage, Java
 Dev Channel: https://discord.com/channels/1411133575650213905/1497485362543595572

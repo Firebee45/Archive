@@ -1,4 +1,4 @@
-# SSF - Dripstone Farm
+# SSF - Dripstone / Sulfur Farm
 ![cover](assets/media/area_render_5_.png)
 
 Version: java
