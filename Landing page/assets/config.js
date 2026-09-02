@@ -1,5 +1,5 @@
 export const config = {
-  nav: {sections: [{label: 'Home', href: '/'}, {label: 'Archive', href: '/Archive/'}]},
+  nav: {sections: [{label: 'Home', href: '/'}, {label: 'Archive', href: '/Archive/'}, {label: 'Projects', href: '/Projects/'}]},
   socials: {links: [{label: 'Discord', href: 'https://discord.gg/VcHtH8Brxs'}, {label: 'YouTube', href: 'https://youtube.com/@firebee./'}, {label: 'Instagram', href: 'https://www.instagram.com/firebee_photography'}]},
   animations: {scrollRevealThreshold: 0.15}
 };
