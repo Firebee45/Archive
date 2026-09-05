@@ -20,16 +20,16 @@ I'm currently a moderator in the following Discord communities.
 
 ## Profile
 Title: Profile
-- Age: 18
+- Age: 19
 - From: Wales, UK
-- Studying: **Level 2** Animal Care
+- Studying: **Level 2** Technical Animal Care
 - Working Towards: **Zoology PHD**
 
 ## Archive Card
 Title: Archive
 CTA: Browse →
 
-Old builds, scripts, and projects worth digging back up.
+Old builds, scripts, and whatever random nonsense I think of.
 
 ## Footer
 FireBee © 2026
