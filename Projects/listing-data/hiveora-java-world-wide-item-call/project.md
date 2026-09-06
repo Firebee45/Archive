@@ -29,3 +29,23 @@ Hiveora is a project aimed to remove the need for local storages at farms or bui
 ## Details
 
 ## Tech
+
+## Todo
+- [ ] 1: Wireless Network
+- [ ] 2: Nether Instant Bolt Network
+- [ ] 3: Sand Cannon
+- [x] 4: Remote Bulk
+- [x] 5: Amount Logic
+- [ ] 6: Cart Loaders
+- [ ] 7: Queuing Logic
+- [ ] 8: Error Handling
+- [ ] 9: Remote World Management Central Control
+- [ ] 10: Farm Status Reading
+- [ ] 11: Location Rom
+- [ ] 12: Storage Input Handling
+- [ ] 13: Bot Player Movement
+- [ ] 14: Farm To Farm Logic
+- [ ] 15: Multi Dimensional Logic
+- [ ] 16: Code Transfer Between Dimensions
+- [ ] 17: End Chunk Loading
+- [ ] 18: End Item Transportation
