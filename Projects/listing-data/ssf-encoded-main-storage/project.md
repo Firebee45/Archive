@@ -21,3 +21,18 @@ A encoded storage for SSF (Structureless SuperFlat) aimed to push the limits of 
 ## Details
 
 ## Tech
+
+## Todo
+- [x] 1: Encoder
+- [ ] 2: IsBulk Whitelister
+- [x] 3: Chest Hall
+- [ ] 4: Overflow
+- [ ] 5: Non Sorted
+- [ ] 6: Unstackable storage
+- [ ] 7: Bulk
+- [ ] 8: Quad Bulk Hall
+- [ ] 9: Splitter
+- [x] 10: Merger
+- [ ] 11: Main Storage Logic
+- [ ] 12: Input
+- [ ] 13: Temp

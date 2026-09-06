@@ -25,8 +25,19 @@
 .Project-carousel-arrow:hover:not(:disabled) { border-color: var(--ember); color: var(--ember); }
 .Project-carousel-arrow:disabled { opacity: .3; cursor: default; }
 .Project-carousel-count { color: var(--project-muted, #756c58); font: .62rem var(--font-mono); }
-.Project-page-involved, .Project-timeline { margin-top: 4rem; border-top: 1px solid var(--line); padding-top: 1.25rem; }
-.Project-page-involved h2, .Project-timeline > h2 { margin: 0 0 1.25rem; color: var(--gold); font: 500 1.25rem var(--font-serif); }
+.Project-page-involved, .Project-timeline, .Project-todo { margin-top: 4rem; border-top: 1px solid var(--line); padding-top: 1.25rem; }
+.Project-page-involved h2, .Project-timeline > h2, .Project-todo > h2 { margin: 0 0 1.25rem; color: var(--gold); font: 500 1.25rem var(--font-serif); }
+.Project-todo-progress { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.Project-todo-progress-bar { flex: 1; height: 6px; overflow: hidden; background: rgba(240, 234, 216, 0.08); }
+.Project-todo-progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--ember)); transition: width .4s ease; }
+.Project-todo-progress-label { flex: 0 0 auto; white-space: nowrap; color: var(--project-muted, #756c58); font: .62rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+.Project-todo-list { display: grid; gap: .6rem; margin: 0; padding: 0; list-style: none; }
+.Project-todo-item { display: flex; align-items: center; gap: .75rem; padding: .65rem .85rem; background: rgba(255, 255, 255, .02); border: 1px solid var(--line); }
+.Project-todo-check { position: relative; flex: 0 0 16px; width: 16px; height: 16px; border: 1px solid rgba(201, 168, 76, .45); }
+.Project-todo-item.is-done .Project-todo-check { background: var(--gold); border-color: var(--gold); }
+.Project-todo-item.is-done .Project-todo-check::after { content: ''; position: absolute; left: 3px; top: 0; width: 4px; height: 8px; border: solid var(--project-bg, #0b0a08); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.Project-todo-text { color: #d8d1bf; font: .78rem/1.6 var(--font-mono); }
+.Project-todo-item.is-done .Project-todo-text { color: var(--project-muted, #756c58); text-decoration: line-through; }
 .Project-profiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
 .Project-profile { display: flex; align-items: center; gap: .8rem; min-width: 0; padding: .85rem; background: rgba(255,255,255,.025); border: 1px solid var(--line); }
 .Project-profile-avatar { flex: 0 0 48px; width: 48px; height: 48px; overflow: hidden; border-radius: 50%; background: #25231e; }
@@ -37,7 +48,8 @@
 .Project-timeline-entry { border-top: 1px solid var(--line); padding: 1.5rem 0; }
 .Project-timeline-entry:first-of-type { border-top: 0; padding-top: 0; }
 .Project-timeline-entry time { display: block; margin-bottom: .8rem; color: var(--ember); font: .65rem var(--font-mono); letter-spacing: .08em; }
-.Project-timeline-entry div { color: #d8d1bf; font: .8rem/1.8 var(--font-mono); }
+.Project-timeline-message { color: #d8d1bf; font: .8rem/1.8 var(--font-mono); }
+.Project-timeline-message + .Project-timeline-message { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px dashed var(--project-line, rgba(240, 234, 216, 0.09)); }
 .Project-timeline-entry h1, .Project-timeline-entry h2, .Project-timeline-entry h3 { color: var(--cream); font-family: var(--font-serif); }
 .Project-timeline-entry p { margin: 0 0 .9rem; }
 .Project-timeline-entry ul, .Project-timeline-entry ol { padding-left: 1.4rem; }

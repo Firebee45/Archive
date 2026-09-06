@@ -11,7 +11,7 @@ export function getTemporaryArchiveImage() {
 
 export function parseProjectMarkdown(raw) {
     const lines = raw.replace(/\r\n/g, '\n').split('\n');
-    const project = { details: [], involved: [], ideas: [], tech: [], tags: [], profiles: {} };
+    const project = { details: [], involved: [], ideas: [], tech: [], tags: [], profiles: {}, todo: [] };
     let section = '';
 
     lines.forEach(line => {
@@ -54,9 +54,15 @@ export function parseProjectMarkdown(raw) {
             project.ideas.push(line.replace(/^-\s+/, '').trim());
         } else if (section === 'tech' && line.match(/^-\s+/)) {
             project.tech.push(line.replace(/^-\s+/, '').trim());
+        } else if (section === 'todo' && line.match(/^-\s+/)) {
+            const todoEntry = line.match(/^-\s+\[( |x)\]\s+(\d+):\s*(.+)$/);
+            if (todoEntry) {
+                project.todo.push({ id: Number(todoEntry[2]), text: todoEntry[3].trim(), done: todoEntry[1] === 'x' });
+            }
         }
     });
 
+    project.todo.sort((a, b) => a.id - b.id);
     project.description = [project.summary, ...project.details, ...project.involved, ...project.ideas, ...project.tags].filter(Boolean).join(' ');
     return project;
 }

@@ -15,37 +15,50 @@ async function involvedMarkup(items) {
     return profiles.join('') || '<p class="Project-page-empty">Nothing listed yet.</p>';
 }
 
-function chronologicalDayMarkdown(markdown) {
+function splitMessageBlocks(markdown) {
     const marker = /<!--\s*update-timestamp:\s*(.+?)\s*-->/g;
     const matches = [...markdown.matchAll(marker)];
-    if (matches.length < 2) return markdown;
+    if (!matches.length) return [markdown];
 
-    const preamble = markdown.slice(0, matches[0].index);
     const blocks = matches.map((match, index) => {
         const start = match.index;
         const end = index + 1 < matches.length ? matches[index + 1].index : markdown.length;
         return { timestamp: Date.parse(match[1]), content: markdown.slice(start, end) };
     });
 
-    blocks.sort((a, b) => a.timestamp - b.timestamp);
-    return preamble + blocks.map(block => block.content).join('');
+    blocks.sort((a, b) => b.timestamp - a.timestamp);
+
+    const preamble = markdown.slice(0, matches[0].index).trim();
+    return preamble ? [preamble, ...blocks.map(block => block.content)] : blocks.map(block => block.content);
+}
+
+function renderMessageBlock(block, base) {
+    const images = [...block.matchAll(/!\[[^\]]*\]\(([^)]+)\)/g)].map(match => {
+        const target = match[1].trim();
+        return /^(?:[a-z]+:|\/|#)/i.test(target) ? target : new URL(target, base).href;
+    });
+
+    const cleaned = block
+        .replace(/!\[[^\]]*\]\([^)]*\)\s*/g, '')
+        .replace(/^##\s+Media\s*$/gim, '')
+        .replace(/(\[[^\]]*\]\()([^)]+)(\))/g, (match, prefix, target, suffix) => {
+            if (/^(?:[a-z]+:|\/|#)/i.test(target)) return match;
+            return `${prefix}${new URL(target, base).href}${suffix}`;
+        });
+
+    const media = images.length
+        ? `<div class="Project-timeline-media"><h3>Media</h3>${carouselMarkup([...new Set(images)])}</div>`
+        : '';
+
+    return `<div class="Project-timeline-message">${renderTimelineMarkdown(cleaned)}${media}</div>`;
 }
 
 function timelineMarkup(timeline, project) {
     if (!timeline.length) return '<p class="Project-page-empty">No timeline entries yet.</p>';
     return timeline.map(entry => {
-        entry = { ...entry, markdown: chronologicalDayMarkdown(entry.markdown) };
         const base = new URL(`listing-data/${project.projectFolder}/timeline/${entry.date}.md`, location.href);
-        const images = [...entry.markdown.matchAll(/!\[[^\]]*\]\(([^)]+)\)/g)].map(match => {
-            const target = match[1].trim();
-            return /^(?:[a-z]+:|\/|#)/i.test(target) ? target : new URL(target, base).href;
-        });
-        const markdown = entry.markdown.replace(/!\[[^\]]*\]\([^)]*\)\s*/g, '').replace(/^##\s+Media\s*$/gim, '').replace(/(\[[^\]]*\]\()([^)]+)(\))/g, (match, prefix, target, suffix) => {
-            if (/^(?:[a-z]+:|\/|#)/i.test(target)) return match;
-            return `${prefix}${new URL(target, base).href}${suffix}`;
-        });
-        const media = images.length ? `<div class="Project-timeline-media"><h3>Media</h3>${carouselMarkup([...new Set(images)])}</div>` : '';
-        return `<article class="Project-timeline-entry"><time>${entry.date}</time><div>${renderTimelineMarkdown(markdown)}</div>${media}</article>`;
+        const messages = splitMessageBlocks(entry.markdown).map(block => renderMessageBlock(block, base)).join('');
+        return `<article class="Project-timeline-entry"><time>${entry.date}</time>${messages}</article>`;
     }).join('');
 }
 
@@ -179,6 +192,26 @@ function wireCarousels() {
     document.querySelectorAll('.Project-gallery').forEach(wireCarousel);
 }
 
+function todoMarkup(todo) {
+    if (!todo.length) return '';
+    const doneCount = todo.filter(item => item.done).length;
+    const percent = Math.round((doneCount / todo.length) * 100);
+    const items = todo.map(item => `
+        <li class="Project-todo-item${item.done ? ' is-done' : ''}">
+            <span class="Project-todo-check" aria-hidden="true"></span>
+            <span class="Project-todo-text">${item.text}</span>
+        </li>`).join('');
+
+    return `<section class="Project-todo">
+        <h2>Todo</h2>
+        <div class="Project-todo-progress">
+            <div class="Project-todo-progress-bar"><div class="Project-todo-progress-fill" style="width: ${percent}%"></div></div>
+            <span class="Project-todo-progress-label">${doneCount} / ${todo.length} complete</span>
+        </div>
+        <ul class="Project-todo-list">${items}</ul>
+    </section>`;
+}
+
 async function renderProject(project) {
     const page = document.getElementById('projectPage');
     const image = project.image || getTemporaryArchiveImage();
@@ -198,6 +231,7 @@ async function renderProject(project) {
             </div>
         </header>
         <section class="Project-page-involved"><h2>Involved</h2><div class="Project-profiles">${involved}</div></section>
+        ${todoMarkup(project.todo)}
         <section class="Project-timeline"><h2>Timeline</h2>${timelineMarkup(timeline, project)}</section>`;
     wireCarousels();
 }
