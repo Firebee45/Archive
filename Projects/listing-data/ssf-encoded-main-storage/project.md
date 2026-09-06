@@ -23,6 +23,7 @@ A encoded storage for SSF (Structureless SuperFlat) aimed to push the limits of 
 ## Tech
 
 ## Todo
+- [x] 14: MIS
 - [x] 1: Encoder
 - [ ] 2: IsBulk Whitelister
 - [x] 3: Chest Hall
