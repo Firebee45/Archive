@@ -1,0 +1,30 @@
+{
+  "title": "SSF - Merger",
+  "cover": "area_render_147_.png",
+  "version": "java",
+  "tags": "SSF, Storage, Cart, Encoded, Cart Tech",
+  "description": "Merges two carts of the same item type together into the most full output",
+  "credits": [],
+  "features": [
+    "FHL",
+    "4x Merging per module",
+    "Semi fill level sorted output"
+  ],
+  "downsides": [
+    "Gold heavy",
+    "big",
+    "kinda slow cart checking logic"
+  ],
+  "notes": "ROTATION, this only works facing North or South in the schem its facing North",
+  "gallery": [
+    "area_render_146_.png",
+    "area_render_147__1.png",
+    "area_render_147__2.png"
+  ],
+  "downloads": [
+    {
+      "filename": "SSF_-_Cart_Merger_Slice.litematic",
+      "subfolder": "litematic"
+    }
+  ]
+}

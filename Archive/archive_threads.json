@@ -12,5 +12,25 @@
     "channel_id": 1433114395264684095,
     "thread_id": 1543228098764480542,
     "message_id": 1543228098764480542
+  },
+  "ssf-merger.md": {
+    "channel_id": 1433114395264684095,
+    "thread_id": 1548450792040566794,
+    "message_id": 1548450792040566794
+  },
+  "ssf-merger-array.md": {
+    "channel_id": 1433114395264684095,
+    "thread_id": 1548452375268818994,
+    "message_id": 1548452375268818994
+  },
+  "ssf-most-full-checker.md": {
+    "channel_id": 1433114395264684095,
+    "thread_id": 1548454061408264222,
+    "message_id": 1548454061408264222
+  },
+  "ssf-unstackable-remover.md": {
+    "channel_id": 1433114395264684095,
+    "thread_id": 1548455390268624968,
+    "message_id": 1548455390268624968
   }
 }

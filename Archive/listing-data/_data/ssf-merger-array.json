@@ -1,0 +1,32 @@
+{
+  "title": "SSF - Merger Array",
+  "cover": "area_render_44_.png",
+  "version": "java",
+  "tags": "SSF, Storage, Cart, Encoded",
+  "description": "Merges carts of the same item type to their most full output",
+  "credits": [],
+  "features": [
+    "FHL",
+    "4 Mergers",
+    "Fill level sorted output",
+    "Auto start",
+    "Fill level optimised input"
+  ],
+  "downsides": [
+    "Gold heavy",
+    "Can not be rotated",
+    "Can not auto stop",
+    "Can not recycle carts sent when all mergers are full",
+    "600 gt minimum input for pairs of carts"
+  ],
+  "notes": null,
+  "gallery": [
+    "area_render_45_.png"
+  ],
+  "downloads": [
+    {
+      "filename": "SSF_-_Cart_Merger_Array.litematic",
+      "subfolder": "litematic"
+    }
+  ]
+}

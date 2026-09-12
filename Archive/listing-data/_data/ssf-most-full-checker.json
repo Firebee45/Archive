@@ -1,0 +1,24 @@
+{
+  "title": "SSF - Most Full Checker",
+  "cover": "area_render_54_.png",
+  "version": "java",
+  "tags": "SSF, Cart",
+  "description": "Sorts pairs of carts into most full and least full signal strength equivalent fill level",
+  "credits": [],
+  "features": [
+    "Can only handle carts in 86gt+ internals",
+    "Red output is most full output and that cart will be sent first."
+  ],
+  "downsides": [
+    "Gold heavy",
+    "Both carts being checked need to be checked at the same exact gt"
+  ],
+  "notes": "ROTATION NOTE: This can be rotated in all 4 cardinal directions, however it will only work consistently if the carts are dropped into the starting tail from above with no X or Z velocity",
+  "gallery": [],
+  "downloads": [
+    {
+      "filename": "SSF_-_Cart_Most_Full.litematic",
+      "subfolder": "litematic"
+    }
+  ]
+}

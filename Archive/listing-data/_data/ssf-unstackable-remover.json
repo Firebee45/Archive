@@ -1,0 +1,23 @@
+{
+  "title": "SSF - Unstackable Remover",
+  "cover": "area_render_143_.png",
+  "version": "java",
+  "tags": "SSF, Storage, Cart",
+  "description": "Removes unstackble items from carts of a single item type",
+  "credits": [],
+  "features": [
+    "Only works if the input cart has 1 unstackable"
+  ],
+  "downsides": [
+    "Gold heavy",
+    "static entity"
+  ],
+  "notes": "Input speed untested",
+  "gallery": [],
+  "downloads": [
+    {
+      "filename": "SSF_-_Unstackable_Remover.litematic",
+      "subfolder": "litematic"
+    }
+  ]
+}
