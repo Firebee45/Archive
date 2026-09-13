@@ -14,7 +14,9 @@
     "Both carts being checked need to be checked at the same exact gt"
   ],
   "notes": "ROTATION NOTE: This can be rotated in all 4 cardinal directions, however it will only work consistently if the carts are dropped into the starting tail from above with no X or Z velocity",
-  "gallery": [],
+  "gallery": [
+    "area_render_54__1.png"
+  ],
   "downloads": [
     {
       "filename": "SSF_-_Cart_Most_Full.litematic",

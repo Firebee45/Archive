@@ -16,5 +16,8 @@ Removes unstackble items from carts of a single item type
 ## Notes
 Input speed untested
 
+## Gallery
+![](assets/media/area_render_143__1.png)
+
 ## Downloads
 - [SSF_-_Unstackable_Remover.litematic](assets/downloads/litematic/SSF_-_Unstackable_Remover.litematic)

@@ -22,7 +22,6 @@ ROTATION, this only works facing North or South in the schem its facing North
 ## Gallery
 ![](assets/media/area_render_146_.png)
 ![](assets/media/area_render_147__1.png)
-![](assets/media/area_render_147__2.png)
 
 ## Downloads
 - [SSF_-_Cart_Merger_Slice.litematic](assets/downloads/litematic/SSF_-_Cart_Merger_Slice.litematic)

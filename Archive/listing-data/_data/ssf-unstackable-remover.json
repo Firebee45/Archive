@@ -13,7 +13,9 @@
     "static entity"
   ],
   "notes": "Input speed untested",
-  "gallery": [],
+  "gallery": [
+    "area_render_143__1.png"
+  ],
   "downloads": [
     {
       "filename": "SSF_-_Unstackable_Remover.litematic",

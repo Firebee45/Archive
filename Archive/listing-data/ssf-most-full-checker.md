@@ -17,5 +17,8 @@ Sorts pairs of carts into most full and least full signal strength equivalent fi
 ## Notes
 ROTATION NOTE: This can be rotated in all 4 cardinal directions, however it will only work consistently if the carts are dropped into the starting tail from above with no X or Z velocity
 
+## Gallery
+![](assets/media/area_render_54__1.png)
+
 ## Downloads
 - [SSF_-_Cart_Most_Full.litematic](assets/downloads/litematic/SSF_-_Cart_Most_Full.litematic)
