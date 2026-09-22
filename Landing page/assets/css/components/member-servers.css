@@ -1,0 +1,26 @@
+.member-of{display:flex;flex-direction:column;gap:10px;width:100%;margin:0 0 35px;text-align:left;}
+.member-card{background:#161311;border:1px solid rgba(255,200,100,.06);border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.2),0 0 0 1px rgba(255,196,77,.02);}
+.member-list{list-style:none;margin:0;padding:0;}
+.member-row{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:6px 16px;align-items:start;padding:16px 18px;transition:background .2s;}
+.member-row + .member-row{border-top:1px solid rgba(255,255,255,.06);}
+.member-row:hover{background:#1c1815;}
+.member-icon{width:52px;height:52px;border-radius:12px;object-fit:cover;flex-shrink:0;}
+.member-icon--blank{display:grid;place-items:center;background:rgba(201,168,76,.12);color:var(--gold);font-family:var(--font-serif);font-size:1.3rem;}
+.member-info{min-width:0;}
+.member-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;}
+.member-name{margin:0;color:#ece3d6;font-size:.95rem;font-weight:500;letter-spacing:-.2px;}
+.member-version{padding:.12rem .55rem;border:1px solid rgba(201,168,76,.35);border-radius:999px;color:var(--gold);font-size:.62rem;white-space:nowrap;}
+.member-desc{margin:.4rem 0 0;color:#b7ae98;font-size:.74rem;line-height:1.7;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;}
+.member-dates{display:flex;flex-wrap:wrap;gap:.2rem 1rem;margin-top:.6rem;color:var(--dim);font-size:.66rem;}
+.member-dates b{font-weight:400;margin-right:.3rem;opacity:.75;}
+.member-dates .is-active{color:var(--honey);}
+.member-row--ended .member-icon{filter:grayscale(.6);opacity:.75;}
+.member-actions{display:flex;flex-direction:column;gap:8px;}
+.member-actions a{text-align:center;white-space:nowrap;}
+.member-more-btn{padding:7px 16px;border:1px solid rgba(201,168,76,.4);border-radius:8px;color:var(--gold);text-decoration:none;font-size:13px;font-weight:700;transition:.2s;}
+.member-more-btn:hover{background:var(--ember);border-color:var(--ember);color:#0b0a08;}
+@media (max-width:560px){
+  .member-row{grid-template-columns:52px minmax(0,1fr);}
+  .member-actions{grid-column:1 / -1;flex-direction:row;}
+  .member-actions a{flex:1;}
+}

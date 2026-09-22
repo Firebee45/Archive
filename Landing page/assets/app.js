@@ -2,6 +2,7 @@ import { config, getNavSections } from './config.js';
 import { NavComponent, SocialsComponent, AnimationComponent, CanvasComponent } from './components/index.js';
 import { FirebeeNav, FirebeeHero, FirebeeDiscord, FirebeeProfile, FirebeeArchive } from './components/LayoutComponents.js';
 import { parseLandingMarkdown } from './landing-markdown.js';
+import { renderMemberServers } from './member-servers.js';
 
 function formatFancyText(text) {
     if (typeof text !== 'string') return text;
@@ -24,6 +25,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     const canvas = new CanvasComponent();
     canvas.init();
+
+    renderMemberServers().catch(error => console.error(error));
 
     try {
         const mdResponse = await fetch('Landing%20page/assets/data/landing.md');
