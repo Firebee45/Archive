@@ -79,6 +79,7 @@ A one chunk server full of TMC players
 - Vault rework
 
 ## Members
+- ihatefallingblocks - (Owner) | https://cdn.discordapp.com/avatars/443157310341251083/40ef37dcb04ba5dbfcff06cc592b1f8d.png?size=1024 | https://www.youtube.com/channel/UCjR42ltVfwJnfF8Fel1O25Q | 
 - Rose | https://cdn.discordapp.com/avatars/1201974859840897065/66aeb0dd1f2596d7f9dc6deacc1b375a.png?size=1024 |  | 
 - Vort | https://cdn.discordapp.com/avatars/854795047248461854/22c0d09dd9fd2226d3a6f1a62b04125f.png?size=1024 |  | 
 - Tacodragon | https://cdn.discordapp.com/avatars/990288867259203656/481ef6fa7500bc2e5f433878ee60c843.png?size=1024 |  | 
@@ -89,7 +90,6 @@ A one chunk server full of TMC players
 - akatas 🧡 | https://cdn.discordapp.com/avatars/1049838359847129158/1c3f42a2f7016d13d75bb098dd0a544b.png?size=1024 | https://www.youtube.com/channel/UClLlcSCvi1vogUxhx-C46XA | 
 - Jethro | https://cdn.discordapp.com/avatars/697038970072072293/50540e5303303dfa864f26e9c6e1e8a4.png?size=1024 |  | 
 - MAT.2 | https://cdn.discordapp.com/avatars/1286021138169860278/41947b4e597a1dab7967cec17936fbcf.png?size=1024 | https://www.youtube.com/channel/UCCaMNRuuM0T3okf9g2hsYGA | 
-- ihatefallingblocks | https://cdn.discordapp.com/avatars/443157310341251083/40ef37dcb04ba5dbfcff06cc592b1f8d.png?size=1024 | https://www.youtube.com/channel/UCjR42ltVfwJnfF8Fel1O25Q | 
 - Undecentions | https://cdn.discordapp.com/avatars/1134226620610248746/3d5086cd8ba97fdf21590f04dc5ca9d7.png?size=1024 |  | 
 - Lucky_Dduck | https://cdn.discordapp.com/avatars/631455651918512138/20b2308c74b10bf93431f844484c6278.png?size=1024 |  | 
 - iSquiddy | https://cdn.discordapp.com/avatars/1192084518702698569/37549b9d6fbfaa0887255f55a6b18704.png?size=1024 |  | 
