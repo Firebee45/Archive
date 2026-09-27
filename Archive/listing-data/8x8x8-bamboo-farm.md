@@ -1,4 +1,4 @@
-# SSF - 8 Bit Encoder
+# 8x8x8 Bamboo Farm
 ![cover](assets/media/area_render_16_.png)
 
 Version: Java
