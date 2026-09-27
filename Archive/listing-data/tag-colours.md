@@ -8,4 +8,6 @@
 - Box Processing: #ff0800
 - Main Storage: #a4a1ff
 - Cart Tech: #290d59
-- Farm: #ffffff
+- Farm: #47aa70
+- Crop: #a7a541
+- Plant: #6010ca
