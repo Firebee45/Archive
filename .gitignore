@@ -1,4 +1,9 @@
 bot/
 Landing page/assets/docs/
 __pycache__/
-*.py[cod]
+*.py[cod].config.json
+.pid
+.state.json
+output.log
+.config.json
+.config.json

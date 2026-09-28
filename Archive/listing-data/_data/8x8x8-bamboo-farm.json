@@ -1,0 +1,29 @@
+{
+  "title": "8x8x8 Bamboo Farm",
+  "cover": "area_render_16_.png",
+  "version": "Java",
+  "tags": "Farm, Crop, Plant",
+  "description": "A Bamboo farm crammed into an 8x8x8 area",
+  "credits": [],
+  "features": [
+    "8x8x8 (512 volume)",
+    "Built in box loader",
+    "On / off switch",
+    "714/h without wall, 759/h with wall"
+  ],
+  "downsides": [
+    "Uses a disc for a timer so its loud when running due to music playing",
+    "no hopper locking"
+  ],
+  "notes": null,
+  "gallery": [
+    "area_render_16__1.png",
+    "area_render_17_.png"
+  ],
+  "downloads": [
+    {
+      "filename": "8x8x8_Bamboo_farm.litematic",
+      "subfolder": "litematic"
+    }
+  ]
+}

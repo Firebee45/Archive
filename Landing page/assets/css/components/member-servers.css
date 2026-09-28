@@ -17,6 +17,8 @@
 .member-row--ended .member-icon{filter:grayscale(.6);opacity:.75;}
 .member-actions{display:flex;flex-direction:column;gap:8px;}
 .member-actions a{text-align:center;white-space:nowrap;}
+.member-actions .join-btn{background:#a10974;border-radius:8px;padding:8px 16px;color:#fff;text-decoration:none;font-size:13px;font-weight:700;transition:.2s;}
+.member-actions .join-btn:hover{background:#343541;}
 .member-more-btn{padding:7px 16px;border:1px solid rgba(201,168,76,.4);border-radius:8px;color:var(--gold);text-decoration:none;font-size:13px;font-weight:700;transition:.2s;}
 .member-more-btn:hover{background:var(--ember);border-color:var(--ember);color:#0b0a08;}
 @media (max-width:560px){

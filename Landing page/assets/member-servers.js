@@ -1,9 +1,12 @@
 import { parseServerMarkdown, getMembershipInfo, escapeHtml, safeUrl, formatInline } from '../../servers/assets/server-markdown.js';
 
-const MANIFEST_URL = 'servers/manifest.json';
+const DEFAULT_MANIFEST_PATH = 'servers/manifest.json';
 
-async function loadServers() {
-    const manifestUrl = new URL(MANIFEST_URL, document.baseURI);
+/* manifestPath is resolved against the *calling page's* URL, so pass
+   'servers/manifest.json' from the landing page and 'manifest.json'
+   from a page that already lives inside /servers/. */
+export async function loadServers(manifestPath = DEFAULT_MANIFEST_PATH) {
+    const manifestUrl = new URL(manifestPath, document.baseURI);
     const response = await fetch(manifestUrl);
     if (!response.ok) return [];
 
@@ -24,7 +27,7 @@ async function loadServers() {
     return servers.filter(Boolean);
 }
 
-function rowMarkup(server) {
+export function rowMarkup(server) {
     const info = getMembershipInfo(server);
     const name = escapeHtml(server.title || 'Untitled server');
     const icon = safeUrl(server.icon);
