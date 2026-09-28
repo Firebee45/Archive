@@ -1,5 +1,5 @@
 # 8x8x8 Kelp Farm
-![cover](assets/media/area_render_18__1.png)
+![](assets/media/area_render_18__1.png)
 
 Version: Java
 Tags: Farm, Crop, Plant
