@@ -1,0 +1,27 @@
+{
+  "title": "8x8x8 Sugar Cane Farm",
+  "cover": "area_render_20_.png",
+  "version": "Java",
+  "tags": "Farm, Crop, Plant",
+  "description": "A sugar cane farm that was made for OneChunk",
+  "credits": [],
+  "features": [
+    "43 sugar cane plants to be harvested",
+    "No static entities",
+    "Speed untested as of now"
+  ],
+  "downsides": [
+    "Not all sugar cane is collected 100% of the time"
+  ],
+  "notes": "2 walls are needed in the case of OneChunk this is the world border",
+  "gallery": [
+    "area_render_20__1.png",
+    "area_render_18__2.png"
+  ],
+  "downloads": [
+    {
+      "filename": "8x8x8_Sugar_Cane_Farm.litematic",
+      "subfolder": "litematic"
+    }
+  ]
+}
