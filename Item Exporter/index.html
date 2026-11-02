@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0a08">
+<title>World Item Exporter | FireBee Tools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../Landing%20page/assets/css/variables.css">
+<link rel="stylesheet" href="../Landing%20page/assets/css/components/nav.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+<firebee-nav with-action></firebee-nav>
+
+<main id="top">
+  <section class="hero" id="scan">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <p class="idx" data-copy="hero-category"></p>
+        <h1 class="lead" data-copy="hero-title"></h1>
+        <p class="hero-intro" data-copy="hero-intro"></p>
+        <div class="hero-actions">
+          <button id="heroChoose" class="btn accent lg" type="button" data-copy="choose-world"></button>
+          <a class="link-text" href="#how" data-copy="how-link"></a>
+        </div>
+      </div>
+
+      <div class="card scan-card reveal">
+        <div class="scan-head">
+          <strong data-copy="scan-heading"></strong>
+          <span class="state"><span id="stateDot" class="dot"></span><span id="stateText">Ready</span></span>
+        </div>
+        <p class="notice" data-copy="scan-notice"></p>
+        <label class="drop" id="drop" for="zipFile">
+          <strong id="dropTitle" data-copy="drop-title"></strong>
+          <span id="dropHint" data-copy="drop-hint"></span>
+          <div id="fileName" class="file-name"></div>
+          <input id="zipFile" type="file" accept=".zip,application/zip">
+        </label>
+        <div class="progress">
+          <div class="progress-head">
+            <span id="progressTitle" class="progress-title" data-copy="progress-title"></span>
+            <span id="progressPct" class="progress-pct">0%</span>
+          </div>
+          <div class="track" role="progressbar" data-copy-aria-label="progress-label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="track"><div id="bar" class="bar"></div></div>
+          <p id="status" class="status" role="status" data-copy="scan-status"></p>
+        </div>
+        <div class="actions">
+          <div class="split">
+            <button id="scanBtn" class="btn solid scan-main" disabled data-copy="scan-button"></button>
+            <button id="dimBtn" class="btn solid caret" type="button" aria-haspopup="true" aria-expanded="false" data-copy-aria-label="dimensions-label" data-copy-title="dimensions-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+            <div id="dimMenu" class="menu" role="dialog" data-copy-aria-label="dimensions-title">
+              <p class="menu-title" data-copy="dimensions-title"></p>
+              <label class="menu-row"><input class="dim-check" type="checkbox" value="overworld" checked><span data-copy="dimension-overworld"></span></label>
+              <label class="menu-row"><input class="dim-check" type="checkbox" value="nether" checked><span data-copy="dimension-nether"></span></label>
+              <label class="menu-row"><input class="dim-check" type="checkbox" value="end" checked><span data-copy="dimension-end"></span></label>
+              <p class="menu-title menu-sub" data-copy="options-title"></p>
+              <label class="menu-row"><input id="excludeStructures" type="checkbox"><span data-copy="structure-option"></span></label>
+              <p class="menu-hint" data-copy="structure-hint"></p>
+            </div>
+          </div>
+          <div class="menu-anchor">
+            <button id="exportBtn" class="btn" type="button" disabled aria-haspopup="true" aria-expanded="false" data-copy="export-button"></button>
+            <div id="exportMenu" class="menu menu-export" role="dialog" data-copy-aria-label="export-options">
+              <p class="menu-title" data-copy="export-button"></p>
+              <div class="menu-row">
+                <label for="exportMinCheck" data-copy="minimum-label"></label>
+                <input id="exportMinValue" class="num" type="text" inputmode="numeric" value="10" disabled data-copy-aria-label="minimum-label">
+                <input id="exportMinCheck" class="switch" type="checkbox" role="switch">
+              </div>
+              <p id="exportCount" class="menu-note"></p>
+              <div class="menu-actions">
+                <button id="exportXlsxBtn" class="btn solid" type="button" data-copy="excel-button"></button>
+                <button id="exportCsvBtn" class="btn" type="button" data-copy="csv-button"></button>
+              </div>
+
+              <div class="menu-divider"></div>
+              <p class="menu-title" data-copy="litematic-title"></p>
+              <div class="menu-row"><label for="litCompact" data-copy="compact-label" data-copy-title="compact-hint"></label><input id="litCompact" class="switch" type="checkbox" role="switch"></div>
+              <div class="menu-row"><label for="litKeepNamed" data-copy="keep-named-label" data-copy-title="keep-named-hint"></label><input id="litKeepNamed" class="switch" type="checkbox" role="switch" checked></div>
+              <div class="menu-row"><label for="litKeepEmpty" data-copy="keep-empty-label" data-copy-title="keep-empty-hint"></label><input id="litKeepEmpty" class="switch" type="checkbox" role="switch" checked></div>
+              <div class="menu-row"><label for="litNoUnstack" data-copy="unstackable-label" data-copy-title="unstackable-hint"></label><input id="litNoUnstack" class="switch" type="checkbox" role="switch"></div>
+              <div class="menu-row"><label for="litMax" data-copy="max-barrels-label"></label><input id="litMax" class="num" type="text" inputmode="numeric" value="100"></div>
+              <p id="litNote" class="menu-note"></p>
+              <div class="menu-actions">
+                <button id="exportLitBtn" class="btn solid" type="button" disabled data-copy="litematic-button"></button>
+              </div>
+              <p class="menu-hint" data-copy="litematic-hint"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap reveal" data-copy-aria-label="summary-label">
+    <div class="stats">
+      <section class="distribution" aria-labelledby="distributionTitle">
+        <div class="distribution-heading">
+          <div><span class="idx" data-copy="breakdown-label"></span><h2 id="distributionTitle" data-copy="distribution-title"></h2></div>
+          <p id="distributionNote" class="distribution-note" data-copy="distribution-note"></p>
+        </div>
+        <div id="distributionBody" class="distribution-body" hidden>
+          <div id="distributionChartScroll" class="distribution-chart-scroll" role="region" data-copy-aria-label="chart-label" tabindex="0">
+            <ul id="itemBarChart" class="item-bar-chart" data-copy-aria-label="chart-list-label"></ul>
+          </div>
+        </div>
+      </section>
+      <div class="stat"><span class="n">01</span><strong id="itemKinds">--</strong><span class="l" data-copy="unique-items-label"></span></div>
+      <div class="stat"><span class="n">02</span><strong id="itemCount">--</strong><span class="l" data-copy="total-items-label"></span></div>
+      <div class="stat"><span class="n">03</span><strong id="containers">--</strong><span class="l" data-copy="nonempty-containers-label"></span></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="section reveal" id="items">
+      <div class="sec-head">
+        <div><span class="idx" data-copy="results-label"></span><h2 data-copy="results-title"></h2></div>
+        <p data-copy="results-intro"></p>
+      </div>
+      <div class="grid-2">
+        <div class="card panel">
+          <h3 data-copy="items-title"></h3>
+          <p class="desc" data-copy="items-description"></p>
+          <div class="controls">
+            <input id="search" type="search" data-copy-placeholder="filter-placeholder" data-copy-aria-label="filter-label" disabled>
+          </div>
+          <div id="results" class="empty" data-copy="items-empty"></div>
+        </div>
+        <div class="card panel" id="containers-panel">
+          <h3 data-copy="containers-title"></h3>
+          <p class="desc" data-copy="containers-description"></p>
+          <div id="containerResults" class="empty" data-copy="containers-empty"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="how">
+      <div class="sec-head">
+        <div><span class="idx" data-copy="method-label"></span><h2 data-copy="method-title"></h2></div>
+        <p data-copy="method-intro"></p>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="n">01</span><b data-copy="step-one-title"></b><p data-copy="step-one-description"></p></div>
+        <div class="step"><span class="n">02</span><b data-copy="step-two-title"></b><p data-copy="step-two-description"></p></div>
+        <div class="step"><span class="n">03</span><b data-copy="step-three-title"></b><p data-copy="step-three-description"></p></div>
+        <div class="step"><span class="n">04</span><b data-copy="step-four-title"></b><p data-copy="step-four-description"></p></div>
+      </div>
+      <p class="limits"><strong data-copy="limits-label"></strong> <span data-copy="limits-description"></span></p>
+    </section>
+
+    <section class="cta reveal">
+      <div>
+        <h2 data-copy="cta-title"></h2>
+        <p data-copy="cta-description"></p>
+      </div>
+      <button id="ctaChoose" class="btn accent lg" type="button" data-copy="choose-world"></button>
+    </section>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
+<script src="js/utils/helpers.js"></script>
+<script src="js/logic/state.js"></script>
+<script src="js/ui/dom.js"></script>
+<script src="js/utils/nbt.js"></script>
+<script src="js/utils/nbt-write.js"></script>
+<script src="js/logic/items.js"></script>
+<script src="js/logic/structures.js"></script>
+<script src="js/ui/table.js"></script>
+<script src="js/ui/render.js"></script>
+<script src="js/ui/menus.js"></script>
+<script src="js/utils/xlsx.js"></script>
+<script src="js/logic/exporter.js"></script>
+<script src="js/logic/scanner.js"></script>
+<script src="js/ui/reveal.js"></script>
+<script src="js/ui/search.js"></script>
+<script src="js/ui/dismiss.js"></script>
+<script src="js/buttons/choose-world.js"></script>
+<script src="js/buttons/scan.js"></script>
+<script src="js/buttons/export.js"></script>
+<script src="js/logic/litematic.js"></script>
+<script type="module">
+  import { NavComponent } from '../Landing%20page/assets/components/nav.js';
+  import { FirebeeNav } from '../Landing%20page/assets/components/ArchiveComponents.js';
+  import { getNavSections } from '../Landing%20page/assets/config.js';
+  import { formatInline } from '../servers/assets/server-markdown.js';
+  import { parsePageCopy } from './js/ui/page-copy.js';
+
+  async function loadPageCopy() {
+    const response = await fetch(new URL('content.md', import.meta.url));
+    if (!response.ok) {
+      throw new Error(`Failed to load content.md: ${response.status} ${response.statusText}`);
+    }
+
+    const content = parsePageCopy(await response.text());
+    document.title = content.title;
+    for (const element of document.querySelectorAll('[data-copy]')) {
+      const key = element.dataset.copy;
+      if (!Object.hasOwn(content.copy, key)) {
+        throw new Error(`Missing page copy for "${key}".`);
+      }
+      element.innerHTML = formatInline(content.copy[key]);
+    }
+    for (const element of document.querySelectorAll('[data-copy-aria-label]')) {
+      const key = element.dataset.copyAriaLabel;
+      if (!Object.hasOwn(content.copy, key)) {
+        throw new Error(`Missing accessibility copy for "${key}".`);
+      }
+      element.setAttribute('aria-label', content.copy[key]);
+    }
+    for (const element of document.querySelectorAll('[data-copy-title]')) {
+      const key = element.dataset.copyTitle;
+      if (!Object.hasOwn(content.copy, key)) {
+        throw new Error(`Missing tooltip copy for "${key}".`);
+      }
+      element.title = content.copy[key];
+    }
+    for (const element of document.querySelectorAll('[data-copy-placeholder]')) {
+      const key = element.dataset.copyPlaceholder;
+      if (!Object.hasOwn(content.copy, key)) {
+        throw new Error(`Missing placeholder copy for "${key}".`);
+      }
+      element.placeholder = content.copy[key];
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    new NavComponent(getNavSections()).init();
+    loadPageCopy().catch(error => {
+      console.error('Unable to load Item Exporter page copy:', error);
+      const main = document.querySelector('main');
+      if (main) {
+        const message = document.createElement('p');
+        message.className = 'status error';
+        message.setAttribute('role', 'alert');
+        message.textContent = 'Page content could not be loaded.';
+        main.prepend(message);
+      }
+    });
+  });
+</script>
+</body>
+</html>

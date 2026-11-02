@@ -1,0 +1,8 @@
+.about-tag { position: relative; z-index: 2; width: 100%; max-width: 900px; margin: 0 auto clamp(4rem, 8vw, 6rem) auto; padding: 0 1.75rem; opacity: 0; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards; }
+.about-tag-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.4rem; padding: 2.4rem; border: 1px solid rgba(201, 168, 76, 0.2); background: rgba(22, 20, 15, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); }
+.about-tag .tag-title { font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 0; font-weight: 500; grid-column: 1 / -1; }
+.tag-row { display: flex; flex-direction: column; gap: 0.5rem; padding: 0; border-bottom: none; font-size: 0.8rem; transition: none; }
+.tag-row .k { color: var(--honey); letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.65rem; font-weight: 500; white-space: nowrap; }
+.tag-row .v { color: var(--cream); text-align: left; font-weight: 300; font-size: 0.95rem; }
+@media (min-width: 768px) { .about-tag-content { grid-template-columns: repeat(5, 1fr); gap: 3rem; } .about-tag .tag-title { grid-column: 1 / -1; margin-bottom: 0.5rem; } }
+firebee-profile { display: block; max-width: 900px; margin: 0 auto; }

@@ -1,0 +1,15 @@
+:root {
+  color-scheme: dark;
+  --bg:#0b0a08; --surface:#11100d; --ink:#f0ead8; --on-ink:#0b0a08; --muted:#b7ae98; --faint:#756c58;
+  --line:rgba(240,234,216,.09); --line-strong:rgba(201,168,76,.3); --line-hover:#c9a84c; --hover:#16140f; --drop-hover:rgba(255,106,52,.08);
+  --accent:#ff6a34; --accent-ink:#e0973a; --ok:#8c9b59; --error:#ff8069; --solid-hover:#e0973a;
+  --nav-bg:rgba(11,10,8,.88);
+  --cta-bg:#11100d; --cta-ink:#f0ead8; --cta-muted:#b7ae98; --cta-line:rgba(201,168,76,.2);
+  --radius:3px; --max:1180px;
+  --font:var(--font-mono);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:76px; -webkit-text-size-adjust:100%; background:var(--bg); }
+body { margin:0; background:var(--bg); color:var(--ink); font:400 14px/1.7 var(--font); -webkit-font-smoothing:antialiased; letter-spacing:0; }
+a { color:inherit; }
+.wrap { width:100%; max-width:var(--max); margin:0 auto; padding:0 clamp(20px,4vw,48px); }

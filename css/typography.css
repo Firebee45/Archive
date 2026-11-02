@@ -1,0 +1,8 @@
+h1{font-family:var(--font-serif);font-weight:700;font-size:clamp(2.4rem,8vw,3.6rem);letter-spacing:-0.01em;margin-bottom:0.3em;opacity:0;animation:fadeUp 1s ease 0.5s forwards;}
+h1 em{font-style:italic;background:linear-gradient(100deg,var(--gold) 10%,var(--ember) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.eyebrow{font-size:0.65rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--gold);margin-bottom:0.9rem;opacity:0;animation:fadeUp 1s ease 0.35s forwards;}
+.about{font-size:0.86rem;font-weight:300;color:#c8c0ac;line-height:1.95;max-width:420px;margin:0 auto 1.8rem;opacity:0;animation:fadeUp 1s ease 1s forwards;}
+.about strong{color:var(--cream);font-weight:500;}
+strong.fancy-bold{font-weight:70;color:#ffffff;}
+.Archive-build-page a{color:var(--Archive-gold)!important;text-decoration:none!important;border-bottom:1px solid var(--Archive-gold)!important;transition:all .3s ease!important;}
+.Archive-build-page a:hover{color:var(--Archive-cream)!important;background-color:var(--Archive-gold)!important;border-bottom-color:var(--Archive-cream)!important;}
