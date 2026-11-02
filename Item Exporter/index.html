@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="css/components.css">
 <link rel="stylesheet" href="css/layout.css">
 <link rel="stylesheet" href="css/effects.css">
+<script src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
 </head>
 <body>
 <firebee-nav with-action></firebee-nav>
@@ -29,6 +30,7 @@
           <button id="heroChoose" class="btn accent lg" type="button" data-copy="choose-world"></button>
           <a class="link-text" href="#how" data-copy="how-link"></a>
         </div>
+        <div class="kofi-support" id="kofiSupport"></div>
       </div>
 
       <div class="card scan-card reveal">
@@ -187,6 +189,22 @@
 <script src="js/buttons/scan.js"></script>
 <script src="js/buttons/export.js"></script>
 <script src="js/logic/litematic.js"></script>
+<script>
+  const kofiSupport = document.getElementById('kofiSupport');
+  if (kofiSupport) {
+    const renderKofiWidget = () => {
+      if (!window.kofiwidget2) return;
+      window.kofiwidget2.init('Support me on Ko-fi', '#eb7600', 'B0S7257CGJ');
+      kofiSupport.innerHTML = window.kofiwidget2.getHTML();
+    };
+
+    if (window.kofiwidget2) {
+      renderKofiWidget();
+    } else {
+      window.addEventListener('load', renderKofiWidget, { once: true });
+    }
+  }
+</script>
 <script type="module">
   import { NavComponent } from '../Landing%20page/assets/components/nav.js';
   import { FirebeeNav } from '../Landing%20page/assets/components/ArchiveComponents.js';
