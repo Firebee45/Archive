@@ -1,5 +1,9 @@
 export class FirebeeNav extends HTMLElement {
     connectedCallback() {
+        const actionHTML = this.hasAttribute('with-action')
+            ? '<button id="navCta" class="site-nav-action" type="button">Choose world</button>'
+            : '';
+
         const withSearch = this.hasAttribute('with-search');
         
         const searchHTML = withSearch ? `
@@ -26,6 +30,7 @@ export class FirebeeNav extends HTMLElement {
             <nav class="hex-menu" id="hexMenu" aria-label="Site sections">
               <div class="nav-row">
                 ${searchHTML}
+                ${actionHTML}
                 <button class="hex-toggle" id="hexToggle" aria-label="Menu">
                   <span class="bars"><span></span><span></span><span></span></span>
                 </button>
