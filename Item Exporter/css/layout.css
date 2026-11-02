@@ -14,6 +14,14 @@ h1 { margin:0; font-family:var(--font-serif); font-size:clamp(40px,6.2vw,80px); 
 .lead em { color:var(--ember); font-style:italic; }
 .hero-intro { max-width:510px; margin:1.25rem 0 0; color:var(--muted); font-size:.8rem; line-height:1.9; }
 .hero-actions { display:flex; align-items:center; gap:24px; flex-wrap:wrap; margin-top:32px; }
+.kofi-support { display:flex; align-items:center; margin:20px 0 0; opacity:.82; transition:opacity .2s ease; }
+.kofi-support:hover { opacity:1; }
+.kofi-support iframe,
+.kofi-support > div,
+.kofi-support a { border-radius:999px; overflow:hidden; box-shadow:0 0 12px rgba(235,118,0,.2); transition:transform .2s ease, box-shadow .2s ease; }
+.kofi-support:hover iframe,
+.kofi-support:hover > div,
+.kofi-support:hover a { transform:translateY(-1px); box-shadow:0 0 18px rgba(235,118,0,.35); }
 
 .section { padding:clamp(40px,6vw,72px) 0 0; }
 .sec-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:24px; align-items:end; margin-bottom:24px; }
