@@ -32,7 +32,7 @@ A encoded storage for SSF (Structureless SuperFlat) aimed to push the limits of 
 - [ ] 6: Unstackable storage
 - [ ] 7: Bulk
 - [ ] 8: Quad Bulk Hall
-- [ ] 9: Splitter
+- [x] 9: Splitter
 - [x] 10: Merger
 - [ ] 11: Main Storage Logic
 - [ ] 12: Input
