@@ -1,12 +1,12 @@
-import { NavComponent } from '../../Landing%20page/assets/components/nav.js';
-import '../../Landing%20page/assets/components/ArchiveComponents.js';
-import { getNavSections } from '../../Landing%20page/assets/config.js';
-import { SearchComponent } from '../../Archive/assets/js/search-component.js';
+import { initSiteNav } from '../../shared/site-nav.js';
+import '../../shared/site-nav-element.js';
+import { SearchComponent, setSearchPlaceholder } from '../../shared/search-component.js';
 import { YOUTUBE_API_KEY } from './servers-config.js';
 import {
     escapeHtml, safeUrl, formatInline, parseServerMarkdown,
     parseBlocks, parseMembers, parseVideos, getMembershipInfo
-} from './server-markdown.js';
+} from '../../shared/server-markdown.js';
+import { loadYamlContent } from '../../shared/content-loader.js';
 
 /* ---------- platform icons for member links ---------- */
 
@@ -299,8 +299,7 @@ async function setupVideos(section, members) {
 
     draw();
 
-    const searchInput = document.querySelector('.search-input');
-    if (searchInput) searchInput.placeholder = 'Search videos or members...';
+    setSearchPlaceholder('Search videos or members...');
     const headers = document.querySelectorAll('.filter-panel-header');
     if (headers[1]) headers[1].textContent = 'Filter by member:';
 
@@ -324,20 +323,18 @@ function renderVideosSection(section) {
 /* ---------- page ---------- */
 
 async function init() {
-    new NavComponent(getNavSections()).init();
+    initSiteNav();
 
     const root = document.getElementById('serverPage');
     if (!root) return;
 
-    const mdUrl = new URL(document.body.dataset.md || 'server.md', pageBase());
+    const contentUrl = new URL(document.body.dataset.content || 'server.yaml', pageBase());
     let server;
     try {
-        const response = await fetch(mdUrl);
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        server = parseServerMarkdown(await response.text());
+        server = parseServerMarkdown(await loadYamlContent(contentUrl));
     } catch (error) {
         console.error(error);
-        root.innerHTML = `<a class="Server-back" href="../../">Back to home</a><p class="Server-empty">Could not load this server's data file (${escapeHtml(mdUrl.pathname)}).</p>`;
+        root.innerHTML = `<a class="Server-back" href="../../">Back to home</a><p class="Server-empty">Could not load this server's data file (${escapeHtml(contentUrl.pathname)}).</p>`;
         removeSearch();
         return;
     }

@@ -1,39 +1,39 @@
 {
-  "ssf-8-bit-encoder.md": {
+  "ssf-8-bit-encoder.yaml": {
     "channel_id": 1433114395264684095,
     "thread_id": 1543222687298617504
   },
-  "ssf-dripstone-farm.md": {
+  "ssf-dripstone-farm.yaml": {
     "channel_id": 1433114395264684095,
     "thread_id": 1543225442159435776,
     "message_id": 1543225442159435776
   },
-  "ssf-cart-mis.md": {
+  "ssf-cart-mis.yaml": {
     "channel_id": 1433114395264684095,
     "thread_id": 1543228098764480542,
     "message_id": 1543228098764480542
   },
-  "ssf-merger.md": {
+  "ssf-merger.yaml": {
     "channel_id": 1433114395264684095,
     "thread_id": 1548450792040566794,
     "message_id": 1548450792040566794
   },
-  "ssf-merger-array.md": {
+  "ssf-merger-array.yaml": {
     "channel_id": 1433114395264684095,
     "thread_id": 1548452375268818994,
     "message_id": 1548452375268818994
   },
-  "ssf-most-full-checker.md": {
+  "ssf-most-full-checker.yaml": {
     "channel_id": 1433114395264684095,
     "thread_id": 1548454061408264222,
     "message_id": 1548454061408264222
   },
-  "ssf-unstackable-remover.md": {
+  "ssf-unstackable-remover.yaml": {
     "channel_id": 1433114395264684095,
     "thread_id": 1548455390268624968,
     "message_id": 1548455390268624968
   },
-  "8x8x8-sugar-cane-farm.md": {
+  "8x8x8-sugar-cane-farm.yaml": {
     "channel_id": 1433114395264684095,
     "thread_id": 1555094630775922768,
     "message_id": 1555094630775922768

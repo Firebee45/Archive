@@ -1,8 +1,8 @@
 import { marked } from 'https://cdn.jsdelivr.net/npm/marked/+esm';
 import { parseBuildMarkdown, parseTagColours } from './build-markdown.js';
-import { NavComponent } from '../../../Landing%20page/assets/components/nav.js';
-import { FirebeeNav } from '../../../Landing%20page/assets/components/ArchiveComponents.js';
-import { getNavSections } from '../../../Landing%20page/assets/config.js';
+import { loadYamlContent } from '../../../shared/content-loader.js';
+import { initSiteNav } from '../../../shared/site-nav.js';
+import '../../../shared/site-nav-element.js';
 
 function formatBytes(bytes) {
     if (bytes === null || bytes === undefined) return '';
@@ -93,8 +93,7 @@ function wireDownloadAll(section, items) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const nav = new NavComponent(getNavSections());
-    nav.init();
+    initSiteNav();
 
     const page = document.querySelector('.Archive-build-page');
     const id = new URLSearchParams(window.location.search).get('id');
@@ -106,17 +105,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try {
         const [buildResponse, colorsResponse] = await Promise.all([
-            fetch(`listing-data/${id}.md`),
-            fetch('listing-data/tag-colours.md').catch(() => null)
+            loadYamlContent(`listing-data/${id}.yaml`),
+            loadYamlContent('listing-data/tag-colours.yaml').catch(() => null)
         ]);
 
-        if (!buildResponse.ok) throw new Error(`Status ${buildResponse.status}`);
-
-        const build = parseBuildMarkdown(await buildResponse.text());
+        const build = parseBuildMarkdown(buildResponse);
         let tagColors = {};
-        if (colorsResponse && colorsResponse.ok) {
-            tagColors = parseTagColours(await colorsResponse.text());
-        }
+        if (colorsResponse !== null) tagColors = parseTagColours(colorsResponse);
 
         document.title = `${build.title} — FireBee Archive`;
 

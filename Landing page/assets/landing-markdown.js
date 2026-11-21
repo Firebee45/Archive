@@ -1,18 +1,4 @@
-function splitSections(raw) {
-    const lines = raw.replace(/\r\n/g, '\n').split('\n');
-    const sections = { header: [] };
-    let current = 'header';
-    lines.forEach(line => {
-        const heading = line.match(/^##\s+(.+)$/);
-        if (heading) {
-            current = heading[1].trim().toLowerCase();
-            sections[current] = [];
-            return;
-        }
-        sections[current].push(line);
-    });
-    return sections;
-}
+import { splitMarkdownSections } from '../../shared/markdown-sections.js';
 
 function splitParagraphs(lines) {
     return lines.join('\n').split(/\n\s*\n/).map(p => p.trim()).filter(Boolean);
@@ -52,7 +38,7 @@ function parseDiscordCommunities(lines) {
 }
 
 export function parseLandingMarkdown(raw) {
-    const sections = splitSections(raw);
+    const sections = splitMarkdownSections(raw);
 
     const heroTitle = parseLine(/^#\s+(.+)$/, sections.header);
     const brandWordmark = parseLine(/^Wordmark:\s*(.+)$/i, sections.header) || heroTitle;

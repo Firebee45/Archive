@@ -1,8 +1,11 @@
-import { config, getNavSections } from './config.js';
-import { NavComponent, SocialsComponent, AnimationComponent, CanvasComponent } from './components/index.js';
-import { FirebeeNav, FirebeeHero, FirebeeDiscord, FirebeeProfile, FirebeeArchive } from './components/LayoutComponents.js';
+import { config } from './config.js';
+import { SocialsComponent, AnimationComponent, CanvasComponent } from './components/index.js';
+import '../../shared/site-nav-element.js';
+import { initSiteNav } from '../../shared/site-nav.js';
+import './components/LayoutComponents.js';
 import { parseLandingMarkdown } from './landing-markdown.js';
-import { renderMemberServers } from './member-servers.js';
+import { renderMemberServers } from '../../shared/member-servers.js';
+import { loadYamlContent } from '../../shared/content-loader.js';
 
 function formatFancyText(text) {
     if (typeof text !== 'string') return text;
@@ -13,8 +16,7 @@ function formatFancyText(text) {
 
 document.addEventListener('DOMContentLoaded', async () => {
     if (document.getElementById('hexMenu')) {
-        const nav = new NavComponent(getNavSections());
-        nav.init();
+        initSiteNav();
     }
     
     const socials = new SocialsComponent(config.socials.links);
@@ -29,10 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderMemberServers().catch(error => console.error(error));
 
     try {
-        const mdResponse = await fetch('Landing%20page/assets/data/landing.md');
-        if (!mdResponse.ok) throw new Error();
-
-        const mdText = await mdResponse.text();
+        const mdText = await loadYamlContent('Landing%20page/assets/data/landing.yaml');
         const data = parseLandingMarkdown(mdText);
         if (!data) return;
 

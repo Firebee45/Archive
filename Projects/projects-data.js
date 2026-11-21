@@ -1,3 +1,5 @@
+import { loadYamlContent } from '../shared/content-loader.js';
+
 const archiveImages = [
     '../Archive/assets/media/area_render_100_.png',
     '../Archive/assets/media/area_render_120_.png',
@@ -113,9 +115,12 @@ export async function loadTimeline(project) {
         if (!manifestResponse.ok) return [];
         const dates = await manifestResponse.json();
         const entries = await Promise.all(dates.map(async date => {
-            const response = await fetch(`listing-data/${folder}/timeline/${date}`);
-            if (!response.ok) return null;
-            return { date: date.replace(/\.md$/, ''), markdown: await response.text() };
+            try {
+                const markdown = await loadYamlContent(`listing-data/${folder}/timeline/${date}`);
+                return { date: date.replace(/\.yaml$/, ''), markdown };
+            } catch (error) {
+                return null;
+            }
         }));
         return entries.filter(Boolean).sort((a, b) => b.date.localeCompare(a.date));
     } catch (error) {
@@ -124,10 +129,8 @@ export async function loadTimeline(project) {
 }
 
 export async function loadProjectFile(path) {
-    const sourcePath = path.includes('/') ? path : `${path}/project.md`;
-    const response = await fetch(`listing-data/${sourcePath}`);
-    if (!response.ok) throw new Error(`Could not load listing-data/${sourcePath}`);
-    const project = parseProjectMarkdown(await response.text());
+    const sourcePath = path.includes('/') ? path : `${path}/project.yaml`;
+    const project = parseProjectMarkdown(await loadYamlContent(`listing-data/${sourcePath}`));
     project.sourcePath = sourcePath;
     project.projectFolder = projectFolderFromPath(sourcePath);
     project.image = project.image ? new URL(project.image, new URL(`listing-data/${sourcePath}`, location.href)).href : '';

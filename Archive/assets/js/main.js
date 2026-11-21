@@ -1,13 +1,12 @@
 import { fetchArchiveData } from './archive-service.js';
 import { renderArchiveGrid, refreshArchiveLayout } from './archive-ui.js';
-import { NavComponent } from '../../../Landing%20page/assets/components/nav.js';
-import { SearchComponent } from './search-component.js'; 
-import { FirebeeNav, FirebeeArchiveShowcase } from '../../../Landing%20page/assets/components/ArchiveComponents.js';
-import { getNavSections } from '../../../Landing%20page/assets/config.js';
+import { initSiteNav } from '../../../shared/site-nav.js';
+import { SearchComponent } from '../../../shared/search-component.js';
+import '../../../shared/site-nav-element.js';
+import { FirebeeArchiveShowcase } from '../../../shared/archive-components.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const nav = new NavComponent(getNavSections());
-    nav.init();
+    initSiteNav();
     const showcaseContainer = document.querySelector('.Archive-showcase');
     if (!showcaseContainer) return;
     const dataPayload = await fetchArchiveData();

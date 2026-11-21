@@ -1,4 +1,4 @@
-@import 'variables.css';
+@import '../../../shared/archive-theme.css';
 @import 'base.css';
 @import 'animations.css';
 @import 'components/archive-header.css';

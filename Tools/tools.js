@@ -1,12 +1,11 @@
-import { NavComponent } from '../Landing%20page/assets/components/nav.js';
-import { FirebeeNav } from '../Landing%20page/assets/components/ArchiveComponents.js';
-import { getNavSections } from '../Landing%20page/assets/config.js';
-import { escapeHtml, formatInline } from '../servers/assets/server-markdown.js';
+import { initSiteNav } from '../shared/site-nav.js';
+import '../shared/site-nav-element.js';
+import { escapeHtml, formatInline } from '../shared/server-markdown.js';
 import { parseToolsMarkdown } from './tools-markdown.js';
+import { loadYamlContent } from '../shared/content-loader.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const nav = new NavComponent(getNavSections());
-    nav.init();
+    initSiteNav();
 
     loadTools().catch(error => {
         console.error('Unable to load tools page content:', error);
@@ -16,12 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function loadTools() {
-    const response = await fetch(new URL('tools.md', import.meta.url));
-    if (!response.ok) {
-        throw new Error(`Failed to load tools.md: ${response.status} ${response.statusText}`);
-    }
-
-    const content = parseToolsMarkdown(await response.text());
+    const content = parseToolsMarkdown(await loadYamlContent(new URL('tools.yaml', import.meta.url)));
     const tools = content.tools.map(tool => {
         const url = new URL(tool.link, window.location.href);
         if (url.protocol !== 'http:' && url.protocol !== 'https:') {

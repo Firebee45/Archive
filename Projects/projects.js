@@ -1,7 +1,6 @@
-import { NavComponent } from '../Landing%20page/assets/components/nav.js';
-import { FirebeeNav } from '../Landing%20page/assets/components/ArchiveComponents.js';
-import { getNavSections } from '../Landing%20page/assets/config.js';
-import { SearchComponent } from '../Archive/assets/js/search-component.js';
+import { initSiteNav } from '../shared/site-nav.js';
+import '../shared/site-nav-element.js';
+import { SearchComponent, setSearchPlaceholder } from '../shared/search-component.js';
 import { getTemporaryArchiveImage, loadProjects } from './projects-data.js';
 
 const tagColours = ['#c9a84c', '#ff6a34', '#6da6a1', '#b87545', '#8c9b59'];
@@ -87,13 +86,19 @@ function renderProjects(projects) {
             <div class="Project-section-grid">${cards}</div>
         </section>`;
     }).join('');
+
+    grid.querySelectorAll('.Project-visual img').forEach(image => {
+        image.addEventListener('error', () => {
+            if (image.dataset.fallbackApplied) return;
+            image.dataset.fallbackApplied = 'true';
+            image.src = getTemporaryArchiveImage();
+        }, { once: true });
+    });
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const nav = new NavComponent(getNavSections());
-    nav.init();
-    const searchInput = document.querySelector('.search-input');
-    if (searchInput) searchInput.placeholder = 'Search projects...';
+    initSiteNav();
+    setSearchPlaceholder('Search projects...');
     try {
         const projects = await loadProjects();
         renderProjects(projects);

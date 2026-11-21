@@ -1,7 +1,7 @@
 import { marked } from 'https://cdn.jsdelivr.net/npm/marked/+esm';
-import { NavComponent } from '../Landing%20page/assets/components/nav.js';
-import { FirebeeNav } from '../Landing%20page/assets/components/ArchiveComponents.js';
-import { getNavSections } from '../Landing%20page/assets/config.js';
+import { loadYamlContent } from '../shared/content-loader.js';
+import { initSiteNav } from '../shared/site-nav.js';
+import '../shared/site-nav-element.js';
 import { fetchDiscordProfile, getTemporaryArchiveImage, loadProjectFile, loadTimeline } from './projects-data.js';
 
 async function involvedMarkup(items) {
@@ -56,7 +56,7 @@ function renderMessageBlock(block, base) {
 function timelineMarkup(timeline, project) {
     if (!timeline.length) return '<p class="Project-page-empty">No timeline entries yet.</p>';
     return timeline.map(entry => {
-        const base = new URL(`listing-data/${project.projectFolder}/timeline/${entry.date}.md`, location.href);
+        const base = new URL(`listing-data/${project.projectFolder}/timeline/${entry.date}.yaml`, location.href);
         const messages = splitMessageBlocks(entry.markdown).map(block => renderMessageBlock(block, base)).join('');
         return `<article class="Project-timeline-entry"><time>${entry.date}</time>${messages}</article>`;
     }).join('');
@@ -233,12 +233,19 @@ async function renderProject(project) {
         <section class="Project-page-involved"><h2>Involved</h2><div class="Project-profiles">${involved}</div></section>
         ${todoMarkup(project.todo)}
         <section class="Project-timeline"><h2>Timeline</h2>${timelineMarkup(timeline, project)}</section>`;
+    const cover = page.querySelector('.Project-page-image img');
+    if (cover) {
+        cover.addEventListener('error', () => {
+            if (cover.dataset.fallbackApplied) return;
+            cover.dataset.fallbackApplied = 'true';
+            cover.src = getTemporaryArchiveImage();
+        }, { once: true });
+    }
     wireCarousels();
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const nav = new NavComponent(getNavSections());
-    nav.init();
+    initSiteNav();
     const page = document.getElementById('projectPage');
     const projectId = new URLSearchParams(location.search).get('id');
     if (!projectId) {

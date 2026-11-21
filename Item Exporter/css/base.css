@@ -1,3 +1,5 @@
+@import url('../../shared/box-sizing.css');
+
 :root {
   color-scheme: dark;
   --bg:#0b0a08; --surface:#11100d; --ink:#f0ead8; --on-ink:#0b0a08; --muted:#b7ae98; --faint:#756c58;
@@ -8,7 +10,6 @@
   --radius:3px; --max:1180px;
   --font:var(--font-mono);
 }
-* { box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:76px; -webkit-text-size-adjust:100%; background:var(--bg); }
 body { margin:0; background:var(--bg); color:var(--ink); font:400 14px/1.7 var(--font); -webkit-font-smoothing:antialiased; letter-spacing:0; }
 a { color:inherit; }

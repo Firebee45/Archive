@@ -1,3 +1,5 @@
+import { splitMarkdownSections } from '../../../shared/markdown-sections.js';
+
 function parseListItems(lines) {
     return lines
         .map(line => line.match(/^-\s+(.*)$/))
@@ -32,19 +34,7 @@ export function toPlainText(markdown) {
 }
 
 export function parseBuildMarkdown(raw) {
-    const lines = raw.replace(/\r\n/g, '\n').split('\n');
-    const sections = { header: [] };
-    let current = 'header';
-
-    lines.forEach(line => {
-        const heading = line.match(/^##\s+(.+)$/);
-        if (heading) {
-            current = heading[1].trim().toLowerCase();
-            sections[current] = [];
-            return;
-        }
-        sections[current].push(line);
-    });
+    const sections = splitMarkdownSections(raw);
 
     let title = '';
     let image = '';

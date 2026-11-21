@@ -1,27 +1,24 @@
 import { parseBuildMarkdown, parseTagColours, toPlainText } from './build-markdown.js';
+import { loadYamlContent } from '../../../shared/content-loader.js';
 
 export async function fetchArchiveData() {
     try {
-        const [manifestResponse, colorsResponse] = await Promise.all([
+        const [manifestResponse, colorsContent] = await Promise.all([
             fetch('listing-data/manifest.json'),
-            fetch('listing-data/tag-colours.md').catch(() => null)
+            loadYamlContent('listing-data/tag-colours.yaml').catch(() => null)
         ]);
 
         if (!manifestResponse.ok) throw new Error('Could not resolve listing-data/manifest.json framework file.');
 
         const fileList = await manifestResponse.json();
         let tagColors = {};
-        if (colorsResponse && colorsResponse.ok) {
-            tagColors = parseTagColours(await colorsResponse.text());
-        }
+        if (colorsContent !== null) tagColors = parseTagColours(colorsContent);
 
         const cardPromises = fileList.map(async (fileName) => {
             try {
-                const cardResponse = await fetch(`listing-data/${fileName}`);
-                if (!cardResponse.ok) throw new Error(`Status ${cardResponse.status}`);
-                const fileText = await cardResponse.text();
+                const fileText = await loadYamlContent(`listing-data/${fileName}`);
                 const parsed = parseBuildMarkdown(fileText);
-                return { ...parsed, description: toPlainText(parsed.description), slug: fileName.replace(/\.md$/, '') };
+                return { ...parsed, description: toPlainText(parsed.description), slug: fileName.replace(/\.yaml$/, '') };
             } catch (cardError) {
                 console.warn(`Skipping individual asset [listing-data/${fileName}]:`, cardError.message);
                 return null;

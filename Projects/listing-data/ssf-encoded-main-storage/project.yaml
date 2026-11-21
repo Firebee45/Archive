@@ -1,0 +1,41 @@
+lineEndings: CRLF
+content: |
+  Title: SSF - Encoded Main Storage
+  Status: Active
+  Updated: 2026-11-21
+  Tags: SSF, Java, Storage, Encoded
+  Dev Channel: https://discord.com/channels/1411133575650213905/1533211005889282208
+  Dev Channel ID: 1533211005889282208
+  IsLocal: 1
+  Image: assets/area_render_147_.png
+  
+  ## Description
+  A encoded storage for SSF (Structureless SuperFlat) aimed to push the limits of what’s possible and be my main storage for my own SSF world.
+  
+  ## Involved
+  <!-- discord-profile: {"id":"752432778947067944","name":"FireBee","avatar":"https://cdn.discordapp.com/avatars/752432778947067944/d8d22c130a8b9fdd7bcef40ad30301e4.png?size=1024"} -->
+  - 752432778947067944: Project owner
+  
+  ## Core Ideas
+  - Push limits
+  - fitful my storage needs
+  
+  ## Details
+  
+  ## Tech
+  
+  ## Todo
+  - [x] 14: MIS
+  - [x] 1: Encoder
+  - [x] 2: IsBulk Whitelister
+  - [x] 3: Chest Hall
+  - [ ] 4: Overflow
+  - [ ] 5: Non Sorted
+  - [ ] 6: Unstackable storage
+  - [ ] 7: Bulk
+  - [ ] 8: Quad Bulk Hall
+  - [x] 9: Splitter
+  - [x] 10: Merger
+  - [ ] 11: Main Storage Logic
+  - [ ] 12: Input
+  - [ ] 13: Temp

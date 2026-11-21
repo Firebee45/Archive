@@ -1,10 +1,9 @@
-import { NavComponent } from '../../Landing%20page/assets/components/nav.js';
-import '../../Landing%20page/assets/components/ArchiveComponents.js';
-import { getNavSections } from '../../Landing%20page/assets/config.js';
-import { loadServers, rowMarkup } from '../../Landing%20page/assets/member-servers.js';
+import { initSiteNav } from '../../shared/site-nav.js';
+import '../../shared/site-nav-element.js';
+import { loadServers, rowMarkup } from '../../shared/member-servers.js';
 
 async function init() {
-    new NavComponent(getNavSections()).init();
+    initSiteNav();
 
     const list = document.getElementById('serversList');
     if (!list) return;

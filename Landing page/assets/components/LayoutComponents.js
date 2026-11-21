@@ -1,19 +1,3 @@
-export class FirebeeNav extends HTMLElement {
-    connectedCallback() {
-        this.innerHTML = `
-            <div class="brand"><a class="wordmark" href="/" id="brandWordmark"></a></div>
-            <nav class="hex-menu" id="hexMenu" aria-label="Site sections">
-              <div class="nav-row">
-                <button class="hex-toggle" id="hexToggle" aria-label="Menu">
-                  <span class="bars"><span></span><span></span><span></span></span>
-                </button> 
-              </div>
-              <div id="petals"></div>
-            </nav>
-        `;
-    }
-}
-
 export class FirebeeHero extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
@@ -86,7 +70,6 @@ export class FirebeeArchive extends HTMLElement {
     }
 }
 
-customElements.define('firebee-nav', FirebeeNav);
 customElements.define('firebee-hero', FirebeeHero);
 customElements.define('firebee-discord', FirebeeDiscord);
 customElements.define('firebee-profile', FirebeeProfile);

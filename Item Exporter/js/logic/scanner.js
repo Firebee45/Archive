@@ -4,31 +4,10 @@
   const NETHER_RE = /(^|\/)(DIM-1|dimensions\/[^/]+\/the_nether)\//i;
   const END_RE = /(^|\/)(DIM1|dimensions\/[^/]+\/the_end)\//i;
   const CUSTOM_DIMENSION_RE = /(^|\/)dimensions\/[^/]+\/.+\/region\//i;
-  const EMPTY_CHUNK = 0;
-  const SKIPPED_CHUNK = 1;
   const MAX_SCAN_WORKERS = 16;
   const dimOf = name => NETHER_RE.test(name) ? 'nether' : END_RE.test(name) ? 'end' : CUSTOM_DIMENSION_RE.test(name) ? null : 'overworld';
   const dimKeyOf = name => name.replace(REGION_RE, '');
   const syncScan = () => { el.scanBtn.disabled = S.scanning || !S.file || !el.dimChecks.some(c => c.checked); };
-  const readChunk = (bytes, slot) => {
-    const loc = slot * 4;
-    const sectorOffset = (bytes[loc] << 16) | (bytes[loc+1] << 8) | bytes[loc+2];
-    const sectorCount = bytes[loc+3];
-    if (!sectorOffset || !sectorCount) return EMPTY_CHUNK;
-    const start = sectorOffset * 4096;
-    if (start + 5 > bytes.length) return SKIPPED_CHUNK;
-    const length = (bytes[start] * 0x1000000) + (bytes[start+1] << 16) + (bytes[start+2] << 8) + bytes[start+3];
-    if (!length || start + 4 + length > bytes.length) return SKIPPED_CHUNK;
-    const compression = bytes[start+4] & 0x7f;
-    try {
-      const payload = bytes.subarray(start+5, start+4+length);
-      const nbtBytes = compression === 1 ? pako.ungzip(payload) : compression === 2 ? pako.inflate(payload) : compression === 3 ? payload : null;
-      if (!nbtBytes) return SKIPPED_CHUNK;
-      const root = WS.parseNBT(nbtBytes, S.keep);
-      S.curDV = Number(WS.getScalar(root, 'DataVersion')) || 0;
-      return root && root.value && root.value.Level ? root.value.Level : root;
-    } catch (e) { return SKIPPED_CHUNK; }
-  };
   const scanRegion = async (file, index, total, token) => {
     const bytes = await file.async('uint8array');
     const dim = dimKeyOf(file.name);
@@ -42,9 +21,9 @@
         last = performance.now();
         if (token !== S.scanToken) return null;
       }
-      const read = readChunk(bytes, slot);
-      if (read === EMPTY_CHUNK) continue;
-      if (read === SKIPPED_CHUNK) { stats.skipped++; continue; }
+      const read = WS.readChunk(bytes, slot, S);
+      if (read === WS.emptyChunk) continue;
+      if (read === WS.skippedChunk) { stats.skipped++; continue; }
       if (!read) { stats.chunks++; continue; }
       try {
         if (S.excludeStructures) WS.structures.addChunk(read, dim);

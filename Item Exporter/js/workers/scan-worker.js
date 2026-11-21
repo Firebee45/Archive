@@ -3,32 +3,10 @@ self.window = self;
 importScripts(
   'https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js',
   '../utils/helpers.js', '../logic/state.js', '../utils/nbt.js', '../utils/nbt-write.js',
-  '../logic/structures.js', '../logic/items.js'
+  '../logic/structures.js', '../logic/items.js', '../logic/chunk-reader.js'
 );
 const S = WS.state;
 let useStructures = false;
-const EMPTY_CHUNK = 0;
-const SKIPPED_CHUNK = 1;
-
-const readChunk = (bytes, slot) => {
-  const loc = slot * 4;
-  const sectorOffset = (bytes[loc] << 16) | (bytes[loc+1] << 8) | bytes[loc+2];
-  const sectorCount = bytes[loc+3];
-  if (!sectorOffset || !sectorCount) return EMPTY_CHUNK;
-  const start = sectorOffset * 4096;
-  if (start + 5 > bytes.length) return SKIPPED_CHUNK;
-  const length = (bytes[start] * 0x1000000) + (bytes[start+1] << 16) + (bytes[start+2] << 8) + bytes[start+3];
-  if (!length || start + 4 + length > bytes.length) return SKIPPED_CHUNK;
-  const compression = bytes[start+4] & 0x7f;
-  try {
-    const payload = bytes.subarray(start+5, start+4+length);
-    const nbtBytes = compression === 1 ? pako.ungzip(payload) : compression === 2 ? pako.inflate(payload) : compression === 3 ? payload : null;
-    if (!nbtBytes) return SKIPPED_CHUNK;
-    const root = WS.parseNBT(nbtBytes, S.keep);
-    S.curDV = Number(WS.getScalar(root, 'DataVersion')) || 0;
-    return root && root.value && root.value.Level ? root.value.Level : root;
-  } catch (e) { return SKIPPED_CHUNK; }
-};
 
 const scanRegion = async m => {
   const bytes = new Uint8Array(m.bytes);
@@ -41,9 +19,9 @@ const scanRegion = async m => {
       const now = performance.now();
       if (now - last > 250) { postMessage({type:'progress', index:m.index, frac:(slot - startSlot) / slotCount, done:chunks + skipped}); last = now; }
     }
-    const read = readChunk(bytes, slot);
-    if (read === EMPTY_CHUNK) continue;
-    if (read === SKIPPED_CHUNK) { skipped++; continue; }
+    const read = WS.readChunk(bytes, slot, S);
+    if (read === WS.emptyChunk) continue;
+    if (read === WS.skippedChunk) { skipped++; continue; }
     if (!read) { chunks++; continue; }
     try {
       if (useStructures) WS.structures.addChunk(read, m.dim);

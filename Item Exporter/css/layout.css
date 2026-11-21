@@ -54,8 +54,6 @@ h2 { margin:0; font-size:clamp(26px,3vw,36px); line-height:1.1; font-weight:600;
 .sec-head h2, .panel h3 { font-family:var(--font-serif); font-weight:500; }
 .stat strong { color:var(--gold); font-family:var(--font-serif); font-weight:500; }
 .step b { font-family:var(--font-serif); font-weight:500; }
-.cta h2 { font-family:var(--font-serif); font-weight:500; }
-
 .cta { margin-top:clamp(48px,7vw,88px); background:var(--cta-bg); border:1px solid var(--cta-line); color:var(--cta-ink); border-radius:16px; padding:clamp(32px,5vw,64px); display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap; }
 .cta h2 { color:var(--cta-ink); max-width:560px; }
 .cta p { margin:12px 0 0; color:var(--cta-muted); max-width:520px; }

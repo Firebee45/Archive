@@ -1,4 +1,5 @@
-*, *::before, *::after {box-sizing: border-box; margin: 0; padding: 0;}
+@import '../../../shared/reset.css';
+
 html {scroll-behavior: smooth;}
 body {min-height: 100vh; overflow-x: hidden; position: relative; background: var(--bg); color: var(--cream); font-family: var(--font-mono); cursor: default;}
 body::before, body::after {content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 60;}

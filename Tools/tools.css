@@ -1,4 +1,5 @@
-@import url('../Archive/assets/css/variables.css');
+@import url('../shared/archive-theme.css');
+@import url('../shared/box-sizing.css');
 
 :root {
     --tools-bg: #0b0a08;
@@ -6,8 +7,6 @@
     --tools-line: rgba(240, 234, 216, 0.09);
     --tools-muted: #b7ae98;
 }
-
-* { box-sizing: border-box; }
 
 body.Tools-body {
     min-height: 100vh;
